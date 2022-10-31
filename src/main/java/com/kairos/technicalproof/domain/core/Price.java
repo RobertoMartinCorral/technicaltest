@@ -10,4 +10,5 @@ public class Price {
     private final ProductId product;
     private final BrandId brand;
     private final PriceSchedule schedule;
+    private final PriceListId priceList;
 }

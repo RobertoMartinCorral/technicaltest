@@ -39,7 +39,8 @@ public class FindPriceUseCaseTest {
                         new BrandId(1L),
                         new PriceSchedule(
                                 Instant.now(),
-                                Instant.now().plus(5L, ChronoUnit.DAYS))
+                                Instant.now().plus(5L, ChronoUnit.DAYS)),
+                        new PriceListId(1L)
                 );
         org.mockito.Mockito.when(pricesRepository.findPrice(any(BrandId.class), any(ProductId.class), any(Instant.class)))
                            .thenReturn(new Ok(returnedPrice));

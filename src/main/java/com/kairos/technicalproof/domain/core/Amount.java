@@ -3,9 +3,11 @@ package com.kairos.technicalproof.domain.core;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
+
 @RequiredArgsConstructor
 @Getter
 public class Amount {
-    private final Double value;
+    private final BigDecimal value;
     private final String currency;
 }

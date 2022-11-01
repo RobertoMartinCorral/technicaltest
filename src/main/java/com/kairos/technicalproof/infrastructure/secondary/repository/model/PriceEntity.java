@@ -1,44 +1,47 @@
 package com.kairos.technicalproof.infrastructure.secondary.repository.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
 @Entity(name="PRICES")
-@RequiredArgsConstructor
-@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class PriceEntity {
 
     @Id
     @Column(nullable=false, name="ID")
-    private final UUID id;
+    private UUID id;
 
     @Column(nullable = false, name = "BRAND_ID")
-    private final Long brandId;
+    private Long brandId;
 
     @Column(nullable = false, name = "PRICE_LIST")
-    private final Long priceListId;
+    private Long priceListId;
 
     @Column(nullable = false, name = "PRODUCT_ID")
-    private final Long productId;
+    private Long productId;
 
     @Column(nullable = false, name = "PRIORITY")
-    private final Long priority;
+    private Long priority;
 
     @Column(nullable = false, name = "PRICE")
-    private final Double price;
+    private BigDecimal price;
 
     @Column(nullable = false, name = "CURR")
-    private final String currency;
+    private String currency;
 
     @Column(nullable = false, name = "START_DATE")
-    private final Instant startDate;
+    private Instant startDate;
 
     @Column(nullable = false, name = "END_DATE")
-    private final Instant endDate;
+    private Instant endDate;
 }

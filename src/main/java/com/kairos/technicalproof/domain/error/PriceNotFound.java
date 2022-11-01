@@ -7,6 +7,6 @@ import java.time.Instant;
 
 public class PriceNotFound extends DomainError {
     public PriceNotFound(BrandId brandId, ProductId productId, Instant instant) {
-        super("DOM-ERR0001", String.format("Price from brand {} and product at {} cannot be found", brandId, productId, instant), null);
+        super("DOM-ERR0001", String.format("Price from brand %d and product %d at %s cannot be found", brandId.getId(), productId.getId(), instant.toString()), null);
     }
 }

@@ -5,6 +5,7 @@ import com.kairos.technicalproof.infrastructure.secondary.repository.mapper.Pric
 import com.kairos.technicalproof.infrastructure.secondary.repository.model.PriceEntity;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
@@ -22,7 +23,7 @@ public class PriceMapperTest {
                 2L,
                 3L,
                 4L,
-                12.23,
+                new BigDecimal("12.23"),
                 "EUR",
                 Instant.now(),
                 Instant.now().plus(5, ChronoUnit.DAYS)

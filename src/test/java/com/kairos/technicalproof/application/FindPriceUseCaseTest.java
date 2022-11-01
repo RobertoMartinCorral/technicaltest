@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
@@ -34,7 +35,7 @@ public class FindPriceUseCaseTest {
         // GIVEN
         Price returnedPrice =
                 new Price (
-                        new Amount(1.0, "EUR"),
+                        new Amount(new BigDecimal("1.0"), "EUR"),
                         new ProductId(1L),
                         new BrandId(1L),
                         new PriceSchedule(

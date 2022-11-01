@@ -4,6 +4,7 @@ import com.kairos.technicalproof.domain.core.*;
 import com.kairos.technicalproof.infrastructure.primary.api.model.price.FindPriceResponse;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
@@ -14,7 +15,7 @@ public class FindPriceMapperTest {
     @Test
     public void mustMapToResponseFromDomain() {
         Price price = new Price(
-                new Amount(12.5, "EUR"),
+                new Amount(new BigDecimal("12.5"), "EUR"),
                 new ProductId(2L),
                 new BrandId(3L),
                 new PriceSchedule(Instant.now(), Instant.now().plus(5, ChronoUnit.DAYS)),

@@ -24,35 +24,35 @@ public class PricesRepositoryAdapterComponentTest {
     private PricesRepositoryAdapter pricesRepositoryAdapter;
 
     @Test
-    public void Test1() {
+    public void shouldReturnPriceWhenSearchingOnJune14th2020At10() {
 
         Result<Price, DomainError> result = pricesRepositoryAdapter.findPrice(new BrandId(1L), new ProductId(35455L), Instant.parse("2020-06-14T10:00:00Z"));
         assertEquals(result.component1().getAmount().getValue(), new BigDecimal("35.50"));
     }
 
     @Test
-    public void Test2() {
+    public void shouldReturnPriceWhenSearchingOnJune14th2020At16() {
 
         Result<Price, DomainError> result = pricesRepositoryAdapter.findPrice(new BrandId(1L), new ProductId(35455L), Instant.parse("2020-06-14T16:00:00Z"));
         assertEquals(result.component1().getAmount().getValue(), new BigDecimal("25.45"));
     }
 
     @Test
-    public void Test3() {
+    public void shouldReturnPriceWhenSearchingOnJune14th2020At21() {
 
         Result<Price, DomainError> result = pricesRepositoryAdapter.findPrice(new BrandId(1L), new ProductId(35455L), Instant.parse("2020-06-14T21:00:00Z"));
         assertEquals(result.component1().getAmount().getValue(), new BigDecimal("35.50"));
     }
 
     @Test
-    public void Test4() {
+    public void shouldReturnPriceWhenSearchingOnJune15th2020At10() {
 
         Result<Price, DomainError> result = pricesRepositoryAdapter.findPrice(new BrandId(1L), new ProductId(35455L), Instant.parse("2020-06-15T10:00:00Z"));
         assertEquals(result.component1().getAmount().getValue(), new BigDecimal("30.50"));
     }
 
     @Test
-    public void Test5() {
+    public void shouldReturnPriceWhenSearchingOnJune16th2020At21() {
 
         Result<Price, DomainError> result = pricesRepositoryAdapter.findPrice(new BrandId(1L), new ProductId(35455L), Instant.parse("2020-06-16T21:00:00Z"));
         assertEquals(result.component1().getAmount().getValue(), new BigDecimal("38.95"));

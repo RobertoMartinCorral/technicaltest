@@ -30,7 +30,7 @@ public class FindPriceControllerComponentTest {
     private MockMvc mvc;
 
     @Test
-    public void Test1() throws Exception {
+    public void shouldReturnPriceWhenSearchingOnJune14th2020At10AndPriceList1() throws Exception {
         // GIVEN (data configured in DatabaseInitialLoad)
 
         //WHEN
@@ -51,7 +51,7 @@ public class FindPriceControllerComponentTest {
     }
 
     @Test
-    public void Test2() throws Exception {
+    public void shouldReturnPriceWhenSearchingOnJune14th2020At16AndPriceList2() throws Exception {
         // GIVEN (data configured in DatabaseInitialLoad)
 
         //WHEN
@@ -73,7 +73,7 @@ public class FindPriceControllerComponentTest {
     }
 
     @Test
-    public void Test3() throws Exception {
+    public void shouldReturnPriceWhenSearchingOnJune14th2020At21AndPriceList1() throws Exception {
         // GIVEN (data configured in DatabaseInitialLoad)
 
         //WHEN
@@ -95,7 +95,7 @@ public class FindPriceControllerComponentTest {
     }
 
     @Test
-    public void Test4() throws Exception {
+    public void shouldReturnPriceWhenSearchingOnJune15th2020At10AndPriceList3() throws Exception {
         // GIVEN (data configured in DatabaseInitialLoad)
 
         //WHEN
@@ -117,7 +117,7 @@ public class FindPriceControllerComponentTest {
     }
 
     @Test
-    public void Test5() throws Exception {
+    public void shouldReturnPriceWhenSearchingOnJune16th2020At21AndPriceList4() throws Exception {
         // GIVEN (data configured in DatabaseInitialLoad)
 
         //WHEN

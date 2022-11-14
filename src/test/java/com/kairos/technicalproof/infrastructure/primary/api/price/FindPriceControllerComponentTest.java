@@ -139,7 +139,7 @@ public class FindPriceControllerComponentTest {
     }
 
     @Test
-    public void Test6() throws Exception {
+    public void shouldReturnNotFoundWhenSearchingOnJanuary1st2021At21() throws Exception {
         // GIVEN (data configured in DatabaseInitialLoad)
 
         //WHEN

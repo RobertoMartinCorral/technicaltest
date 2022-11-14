@@ -1,4 +1,4 @@
-package com.kairos.technicalproof.infrastructure.primary.api.price.mapper;
+package com.kairos.technicalproof.infrastructure.primary.api.price;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -5,9 +5,10 @@ import com.kairos.technicalproof.domain.core.BrandId;
 import com.kairos.technicalproof.domain.core.Price;
 import com.kairos.technicalproof.domain.core.ProductId;
 import com.kairos.technicalproof.domain.error.DomainError;
+import reactor.core.publisher.Mono;
 
 import java.time.Instant;
 
 public interface PricesRepositoryPort {
-    Result<Price, DomainError> findPrice(BrandId brand, ProductId product, Instant instant);
+    Mono<Price> findPrice(BrandId brand, ProductId product, Instant instant);
 }

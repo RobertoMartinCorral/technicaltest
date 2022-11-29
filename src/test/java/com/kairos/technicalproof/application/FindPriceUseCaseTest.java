@@ -1,18 +1,15 @@
 package com.kairos.technicalproof.application;
 
-import com.github.michaelbull.result.Err;
-import com.github.michaelbull.result.Ok;
-import com.github.michaelbull.result.Result;
 import com.kairos.technicalproof.application.usecases.FindPriceUseCase;
 import com.kairos.technicalproof.application.usecases.ports.secondary.PricesRepositoryPort;
 import com.kairos.technicalproof.domain.core.*;
-import com.kairos.technicalproof.domain.error.DomainError;
 import com.kairos.technicalproof.domain.error.PriceNotFound;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -44,15 +41,15 @@ public class FindPriceUseCaseTest {
                         new PriceListId(1L)
                 );
         org.mockito.Mockito.when(pricesRepository.findPrice(any(BrandId.class), any(ProductId.class), any(Instant.class)))
-                           .thenReturn(new Ok(returnedPrice));
+                           .thenReturn(Mono.just(returnedPrice));
 
         // WHEN
-        Result<Price, DomainError> result = findPriceUseCase.findPrice(new BrandId(1L), new ProductId(1L), Instant.now());
+        Mono<Price> mono = findPriceUseCase.findPrice(new BrandId(1L), new ProductId(1L), Instant.now());
 
         // THEN
-        assertInstanceOf(Price.class,result.component1());
-        assertEquals(result.component1(), returnedPrice);
-        assertNull(result.component2());
+        Price result = mono.block();
+        assertInstanceOf(Price.class,result);
+        assertEquals(result, returnedPrice);
     }
 
     @Test()
@@ -60,14 +57,12 @@ public class FindPriceUseCaseTest {
         // GIVEN
         PriceNotFound domainErrorReturned =  new PriceNotFound(new BrandId(1L), new ProductId(1L), Instant.now());
         org.mockito.Mockito.when(pricesRepository.findPrice(any(BrandId.class), any(ProductId.class), any(Instant.class)))
-                           .thenReturn(new Err<DomainError>(domainErrorReturned));
+                           .thenThrow(domainErrorReturned);
 
         // WHEN
-        Result<Price, DomainError> result = findPriceUseCase.findPrice(new BrandId(1L), new ProductId(1L), Instant.now());
+        PriceNotFound returnedException = assertThrows(PriceNotFound.class, () -> findPriceUseCase.findPrice(new BrandId(1L), new ProductId(1L), Instant.now()));
 
         // THEN
-        assertInstanceOf(PriceNotFound.class,result.component2());
-        assertEquals(result.component2(), domainErrorReturned);
-        assertNull(result.component1());
+        assertEquals(returnedException, domainErrorReturned);
     }
 }
